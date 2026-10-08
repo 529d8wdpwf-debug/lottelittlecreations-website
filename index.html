@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lotte Little Creations – kleine, handgemaakte creaties met veel liefde gemaakt.">
+  <title>Lotte Little Creations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#FFF9F2; --pink:#F3D6DC; --beige:#EDE3D5;
+      --brown:#4A3A35; --sage:#C8D5C0; --white:#fff;
+      --radius:22px; --shadow:0 10px 30px rgba(74,58,53,.08);
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:Montserrat, sans-serif; color:var(--brown); background:var(--cream); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; display:block; }
+    .container { width:min(1120px, 92%); margin:auto; }
+    header { position:sticky; top:0; z-index:20; background:rgba(255,249,242,.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(74,58,53,.08); }
+    .nav { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .logo { font-family:"Playfair Display",serif; font-size:1.55rem; font-weight:600; white-space:nowrap; }
+    nav ul { display:flex; list-style:none; gap:24px; font-size:.92rem; font-weight:500; }
+    nav a:hover { opacity:.65; }
+    .icons { display:flex; gap:12px; font-size:1.15rem; }
+    .menu { display:none; border:0; background:none; font-size:1.6rem; color:var(--brown); }
+    .hero { padding:38px 0 70px; }
+    .hero-card { min-height:520px; border-radius:30px; overflow:hidden; display:grid; place-items:center; text-align:center; padding:60px 24px; position:relative;
+      background:linear-gradient(135deg, rgba(243,214,220,.92), rgba(237,227,213,.92)); }
+    .hero-card:before { content:"✦  ♡  ✿  ✦"; position:absolute; top:28px; right:32px; font-size:1.1rem; letter-spacing:12px; opacity:.35; }
+    .hero-content { max-width:720px; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.18em; font-size:.75rem; font-weight:700; margin-bottom:14px; }
+    h1,h2,h3 { font-family:"Playfair Display",serif; line-height:1.15; }
+    h1 { font-size:clamp(2.6rem,6vw,5rem); margin-bottom:18px; }
+    h2 { font-size:clamp(2rem,4vw,3rem); margin-bottom:14px; }
+    .hero p { max-width:650px; margin:0 auto 28px; font-size:1.05rem; }
+    .buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:13px 21px; border-radius:999px; background:var(--brown); color:white; font-weight:700; font-size:.82rem; letter-spacing:.04em; }
+    .btn.alt { background:transparent; color:var(--brown); border:1px solid var(--brown); }
+    section { padding:72px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:28px; }
+    .section-head p { max-width:520px; }
+    .products { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .product { background:var(--white); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+    .product-image { aspect-ratio:1/1; display:grid; place-items:center; background:var(--beige); font-size:3rem; }
+    .product-info { padding:18px; }
+    .product-info h3 { font-size:1.25rem; margin-bottom:6px; }
+    .price { font-weight:700; margin-bottom:13px; }
+    .small-btn { display:inline-block; padding:9px 13px; background:var(--pink); border-radius:999px; font-size:.78rem; font-weight:700; }
+    .categories { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .category { min-height:180px; border-radius:var(--radius); background:var(--beige); padding:24px; display:flex; flex-direction:column; justify-content:end; transition:.2s; }
+    .category:hover { transform:translateY(-3px); }
+    .category:nth-child(2) { background:var(--pink); }
+    .category:nth-child(3) { background:var(--sage); }
+    .category:nth-child(4) { background:#f1e7dc; }
+    .category span { font-size:1.8rem; margin-bottom:10px; }
+    .category h3 { font-size:1.45rem; }
+    .about { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
+    .about-image { min-height:390px; border-radius:30px; background:linear-gradient(145deg,var(--pink),var(--beige)); display:grid; place-items:center; font-size:5rem; }
+    .about p { margin:16px 0 24px; }
+    .benefits { background:var(--beige); }
+    .benefit-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .benefit { padding:25px; background:rgba(255,255,255,.58); border-radius:var(--radius); }
+    .benefit strong { display:block; margin-bottom:7px; font-family:"Playfair Display",serif; font-size:1.25rem; }
+    .social { text-align:center; }
+    .social-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:28px; }
+    .social-tile { aspect-ratio:1; border-radius:18px; background:var(--pink); display:grid; place-items:center; font-size:2rem; }
+    .newsletter { background:var(--pink); border-radius:30px; padding:48px; text-align:center; }
+    .newsletter form { max-width:520px; margin:22px auto 0; display:flex; gap:10px; }
+    input { flex:1; padding:14px 16px; border:1px solid rgba(74,58,53,.2); border-radius:999px; background:white; font:inherit; }
+    footer { background:var(--brown); color:white; padding:52px 0 25px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:30px; }
+    footer h3 { margin-bottom:12px; font-size:1.3rem; }
+    footer ul { list-style:none; display:grid; gap:8px; opacity:.88; font-size:.9rem; }
+    .copyright { margin-top:35px; padding-top:20px; border-top:1px solid rgba(255,255,255,.2); font-size:.8rem; opacity:.7; display:flex; justify-content:space-between; gap:20px; }
+    @media(max-width:850px){
+      nav { display:none; }
+      .icons { display:none; }
+      .menu { display:block; }
+      .products { grid-template-columns:repeat(2,1fr); }
+      .categories,.benefit-grid { grid-template-columns:repeat(2,1fr); }
+      .about { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:560px){
+      .nav { min-height:68px; }
+      .hero { padding-top:18px; }
+      .hero-card { min-height:460px; }
+      section { padding:55px 0; }
+      .section-head { display:block; }
+      .products { gap:12px; }
+      .product-info { padding:14px; }
+      .categories,.benefit-grid,.social-grid { grid-template-columns:1fr 1fr; gap:12px; }
+      .category { min-height:145px; padding:18px; }
+      .newsletter { padding:32px 20px; }
+      .newsletter form { flex-direction:column; }
+      .newsletter .btn { width:100%; border:0; }
+      .footer-grid { grid-template-columns:1fr; }
+      .copyright { display:block; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">Lotte Little Creations</a>
+    <nav aria-label="Hoofdnavigatie">
+      <ul>
+        <li><a href="#">Home</a></li><li><a href="#shop">Shop</a></li><li><a href="#categorieen">Categorieën</a></li>
+        <li><a href="#over">Over Lotte</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="icons"><span>⌕</span><span>♡</span><span>🛒</span></div>
+    <button class="menu" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="eyebrow">Soft • Handmade • Cute</div>
+          <h1>Kleine creaties, met veel liefde gemaakt.</h1>
+          <p>Ontdek de handgemaakte creaties van Lotte Little Creations – uniek, persoonlijk en gemaakt om blij van te worden.</p>
+          <div class="buttons">
+            <a class="btn" href="#shop">SHOP DE COLLECTIE →</a>
+            <a class="btn alt" href="#over">ONTDEK HET VERHAAL</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Ontdek de collectie</div><h2>Favorieten van Lotte Little Creations</h2></div>
+        <p>Een eerste selectie van lieve, handgemaakte creaties. Productfoto's, namen en prijzen kun je later eenvoudig vervangen.</p>
+      </div>
+      <div class="products">
+        <article class="product"><div class="product-image">🎀</div><div class="product-info"><h3>Little Bow</h3><div class="price">€ XX,XX</div><a class="small-btn" href="#contact">Bekijk product</a></div></article>
+        <article class="product"><div class="product-image">💗</div><div class="product-info"><h3>Sweet Heart</h3><div class="price">€ XX,XX</div><a class="small-btn" href="#contact">Bekijk product</a></div></article>
+        <article class="product"><div class="product-image">🌸</div><div class="product-info"><h3>Flower Love</h3><div class="price">€ XX,XX</div><a class="small-btn" href="#contact">Bekijk product</a></div></article>
+        <article class="product"><div class="product-image">✨</div><div class="product-info"><h3>Little Sparkle</h3><div class="price">€ XX,XX</div><a class="small-btn" href="#contact">Bekijk product</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="categorieen">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Shop op gevoel</div><h2>Ontdek de collectie</h2></div></div>
+      <div class="categories">
+        <a class="category" href="#shop"><span>✨</span><h3>Nieuw binnen</h3></a>
+        <a class="category" href="#shop"><span>🎀</span><h3>Cadeautjes</h3></a>
+        <a class="category" href="#shop"><span>💕</span><h3>Favorieten</h3></a>
+        <a class="category" href="#shop"><span>🌸</span><h3>Gepersonaliseerd</h3></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="over">
+    <div class="container about">
+      <div class="about-image">🌷</div>
+      <div>
+        <div class="eyebrow">Het verhaal achter de creaties</div>
+        <h2>Met liefde gemaakt</h2>
+        <p>Welkom bij Lotte Little Creations! Hier worden kleine, unieke creaties met veel liefde en aandacht gemaakt. Van het eerste idee tot het uiteindelijke product: alles draait om creativiteit, persoonlijke details en iets maken waar iemand echt blij van wordt.</p>
+        <a class="btn" href="#contact">MEER OVER LOTTE →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Waarom Lotte Little Creations?</div><h2>Klein, persoonlijk & uniek</h2></div></div>
+      <div class="benefit-grid">
+        <div class="benefit"><strong>♡ Met liefde gemaakt</strong>Handgemaakte creaties met aandacht voor details.</div>
+        <div class="benefit"><strong>✦ Uniek</strong>Geen massaproductie, maar bijzondere items.</div>
+        <div class="benefit"><strong>🎁 Perfect als cadeau</strong>Leuke producten voor jezelf of iemand anders.</div>
+        <div class="benefit"><strong>💌 Persoonlijk</strong>Een warme en persoonlijke service.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="social">
+    <div class="container">
+      <div class="eyebrow">Volg de creaties</div><h2>Volg @LotteLittleCreations</h2>
+      <p>Een kijkje achter de schermen, nieuwe creaties en lieve bestellingen.</p>
+      <div class="social-grid"><div class="social-tile">🌸</div><div class="social-tile">🎀</div><div class="social-tile">💗</div><div class="social-tile">✨</div></div>
+      <br><a class="btn" href="#" onclick="alert('Vervang deze link later door het Instagram-profiel van Lotte Little Creations.'); return false;">VOLG ONS OP INSTAGRAM →</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="newsletter">
+        <div class="eyebrow">Blijf op de hoogte 💌</div>
+        <h2>Nieuwe creaties & leuke updates</h2>
+        <p>Ontdek nieuwe creaties, speciale acties en updates van Lotte Little Creations.</p>
+        <form onsubmit="event.preventDefault(); alert('Dit formulier is een demo. Koppel later een nieuwsbriefdienst.');">
+          <input type="email" placeholder="Jouw e-mailadres" required>
+          <button class="btn" type="submit">AANMELDEN</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Hulp nodig?</div><h2>Veelgestelde vragen</h2></div></div>
+      <details><summary>Hoe lang duurt de levering?</summary><p>Vul hier later de echte levertijd van Lotte Little Creations in.</p></details>
+      <details><summary>Kan ik een creatie personaliseren?</summary><p>Vul hier de mogelijkheden voor personalisatie in.</p></details>
+      <details><summary>Hoe werkt retourneren?</summary><p>Vul hier het retourbeleid in.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>Lotte Little Creations</h3><p>Handgemaakte creaties met een persoonlijke touch.</p></div>
+      <div><h3>Shop</h3><ul><li>Alle producten</li><li>Nieuw</li><li>Cadeaus</li><li>Favorieten</li></ul></div>
+      <div><h3>Klantenservice</h3><ul><li>Contact</li><li>Veelgestelde vragen</li><li>Verzending</li><li>Retourneren</li></ul></div>
+      <div><h3>Volg ons</h3><ul><li>Instagram</li><li>TikTok</li><li>Privacybeleid</li><li>Algemene voorwaarden</li></ul></div>
+    </div>
+    <div class="copyright"><span>© Lotte Little Creations</span><span>Privacybeleid • Algemene voorwaarden • Cookiebeleid</span></div>
+  </div>
+</footer>
+</body>
+</html>
